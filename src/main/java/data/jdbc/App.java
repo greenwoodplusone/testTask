@@ -11,6 +11,7 @@ import java.sql.Statement;
  * Simple example of JDBC usage.
  */
 public final class App {
+    public static String output = "Non null, text";
     /**
      * Query that create table.
      */
@@ -48,9 +49,13 @@ public final class App {
                          db.prepareStatement("SELECT * FROM EXAMPLE")) {
                 ResultSet rs = query.executeQuery();
                 while (rs.next()) {
-                    System.out.println(String.format("%s, %s!",
+                    output = String.format("%s, %s!",
                             rs.getString("GREETING"),
-                            rs.getString("TARGET")));
+                            rs.getString("TARGET"));
+                    System.out.println(output);
+//                    System.out.println(String.format("%s, %s!",
+//                            rs.getString("GREETING"),
+//                            rs.getString("TARGET")));
                 }
                 rs.close();
             }
