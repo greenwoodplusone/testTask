@@ -18,6 +18,11 @@ public final class App {
     private static final String CREATE_QUERY =
             "CREATE TABLE EXAMPLE (GREETING VARCHAR(30), TARGET VARCHAR(30))";
     /**
+     * Query delete table.
+     */
+    private static final String DELETE_QUERY =
+            "DELETE FROM EXAMPLE";
+    /**
      * Quaery that populates table with data.
      */
     private static final String DATA_QUERY_1 =
@@ -38,8 +43,9 @@ public final class App {
      * @param args Command line args. Not used.
      */
     public static void main(final String[] args) {
-        try (Connection db = DriverManager.getConnection("jdbc:h2:mem:")) {
+        try (Connection db = DriverManager.getConnection(("jdbc:h2:mem:"))) {
             try (Statement dataQuery = db.createStatement()) {
+//                dataQuery.execute(DELETE_QUERY);
                 dataQuery.execute(CREATE_QUERY);
                 dataQuery.execute(DATA_QUERY_1);
                 dataQuery.execute(DATA_QUERY_2);

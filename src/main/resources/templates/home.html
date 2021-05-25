@@ -133,7 +133,13 @@
         </tbody>
     </table>
 </div>
+
 <p th:text="'Привет, ' + ${title} + '!'" />
 <p th:text="'Привет, ' + ${data1} + '!'" />
+
+<div th:each="elements : ${securities}">
+    <h3 th:text="${elements.tool}"/>
+    <h3 th:text="${elements.cost}"/>
+</div>
 </body>
 </html>
