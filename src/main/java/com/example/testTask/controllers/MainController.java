@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import data.jdbc.App;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
@@ -23,6 +25,16 @@ public class MainController {
         model.addAttribute("data1", App.output);
         model.addAttribute("title", "Главная страница");
         return "home";
+    }
+
+    @PostMapping("/")
+    public String securitiesAdd(@RequestParam Integer data_time,
+                                @RequestParam String tool,
+                                @RequestParam Integer cost,
+                                Model model) {
+        Securities securities = new Securities(data_time, tool, cost);
+        securitiesRepository.save(securities);
+        return "redirect:/";
     }
 
 }

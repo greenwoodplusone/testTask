@@ -48,4 +48,13 @@ public class Securities {
     public void setCost(Integer cost) {
         this.cost = cost;
     }
+
+    public Securities() {
+    }
+
+    public Securities(Integer data_time, String tool, Integer cost) {
+        this.data_time = data_time;
+        this.tool = tool;
+        this.cost = cost;
+    }
 }
