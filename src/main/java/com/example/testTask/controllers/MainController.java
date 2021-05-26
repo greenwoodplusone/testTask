@@ -1,7 +1,7 @@
 package com.example.testTask.controllers;
 
 import com.example.testTask.models.Securities;
-import com.example.testTask.models.repo.SecuritiesRepository;
+import com.example.testTask.repo.SecuritiesRepository;
 import data.jdbc.App;
 import org.h2.store.Page;
 import org.springframework.beans.factory.annotation.Autowired;
