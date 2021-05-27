@@ -41,14 +41,14 @@ public class MainController {
         return "redirect:/";
     }
 
-//    @GetMapping("/")
-//    public String securitiesAdd(@PathVariable(value = "id") Integer id, Model model) {
-//        Optional<Securities> securities = securitiesRepository.findById(id);
-//        ArrayList<Securities> res = new ArrayList<>();
-//        securities.ifPresent(res::add);
-//        model.addAttribute("securities", res);
-//        return "home";
-//    }
+    @GetMapping("/security/{id}")
+    public String securitiesEdit(@PathVariable(value = "id") Integer id, Model model) {
+        Optional<Securities> securities = securitiesRepository.findById(id);
+        ArrayList<Securities> res = new ArrayList<>();
+        securities.ifPresent(res::add);
+        model.addAttribute("securities", res);
+        return "securities-edit";
+    }
 //
 //    @PostMapping("/")
 //    public String securitiesUpdate(@PathVariable(value = "id") Integer id,

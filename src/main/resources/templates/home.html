@@ -98,10 +98,11 @@
         <tbody>
             <div th:each="elements : ${securities}" class="container mt-5">
                 <tr>
-<!--                    <td><h5 th:text="${elements.id}"/></td>-->
+                    <td><h5 th:text="${elements.id}"/></td>
                     <td><h5 th:text="${elements.data_time}"/></td>
                     <td><h5 th:text="${elements.tool}"/></td>
                     <td><h5 th:text="${elements.cost}"/></td>
+                    <td><a th:href="'/security/' + ${elements.id}" class="btn btn-warning">Редактировать</a></td>
                 </tr>
             </div>
         </tbody>
@@ -189,7 +190,7 @@
 <div class="container mt-5" mb-5>
     <h1>Редактирование данных</h1>
     <div th:each="elements : ${securities}">
-        <form method="securities">
+        <form method="post">
             <input type="text" th:value="${elements.data_time}" name="data_time" placeholder="Введите дату" class="form-control"><br>
             <input type="text" th:value="${elements.tool}" name="tool" placeholder="Введите инструмент" class="form-control"><br>
             <input type="text" th:value="${elements.cost}" name="cost" placeholder="Введите стоимость" class="form-control"><br>
