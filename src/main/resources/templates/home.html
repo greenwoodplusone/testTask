@@ -89,16 +89,17 @@
     <table class="table table-striped table-sm" id="mySQLTable">
         <thead>
         <tr>
-            <th>#</th>
+<!--            <th>#</th>-->
             <th>Дата</th>
             <th>Инструмент</th>
             <th>Стоимость</th>
+            <th>   </th>
         </tr>
         </thead>
         <tbody>
             <div th:each="elements : ${securities}" class="container mt-5">
                 <tr>
-                    <td><h5 th:text="${elements.id}"/></td>
+<!--                    <td><h5 th:text="${elements.id}"/></td>-->
                     <td><h5 th:text="${elements.data_time}"/></td>
                     <td><h5 th:text="${elements.tool}"/></td>
                     <td><h5 th:text="${elements.cost}"/></td>
@@ -185,19 +186,6 @@
 <!--<p th:text="'Привет, ' + ${title} + '!'" />-->
 <!--<p th:text="'Привет, ' + ${data1} + '!'" />-->
 
-
-    <br><br>
-<div class="container mt-5" mb-5>
-    <h1>Редактирование данных</h1>
-    <div th:each="elements : ${securities}">
-        <form method="post">
-            <input type="text" th:value="${elements.data_time}" name="data_time" placeholder="Введите дату" class="form-control"><br>
-            <input type="text" th:value="${elements.tool}" name="tool" placeholder="Введите инструмент" class="form-control"><br>
-            <input type="text" th:value="${elements.cost}" name="cost" placeholder="Введите стоимость" class="form-control"><br>
-            <button type="submit" class="btn btn-success">Обновить</button>
-        </form>
-    </div>
-</div>
 
 </body>
 </html>

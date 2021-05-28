@@ -43,26 +43,37 @@ public class MainController {
 
     @GetMapping("/security/{id}")
     public String securitiesEdit(@PathVariable(value = "id") Integer id, Model model) {
+        if(!securitiesRepository.existsById(id)) {
+            return "redirect:/";
+        }
         Optional<Securities> securities = securitiesRepository.findById(id);
         ArrayList<Securities> res = new ArrayList<>();
         securities.ifPresent(res::add);
         model.addAttribute("securities", res);
         return "securities-edit";
     }
-//
-//    @PostMapping("/")
-//    public String securitiesUpdate(@PathVariable(value = "id") Integer id,
-//                                @RequestParam Integer data_time,
-//                                @RequestParam String tool,
-//                                @RequestParam Integer cost,
-//                                Model model) {
-//        Securities securities = securitiesRepository.findById(id).orElseThrow();
-//        securities.setCost(cost);
-//        securities.setData_time(data_time);
-//        securities.setTool(tool);
-//        securitiesRepository.save(securities);
-//
-//        return "redirect:/";
-//    }
 
+    @PostMapping("/security/{id}")
+    public String securitiesUpdate(@PathVariable(value = "id") Integer id,
+                                @RequestParam(value = "data_time")  Integer data_time,
+                                @RequestParam(value = "tool") String tool,
+                                @RequestParam(value = "cost") Integer cost,
+                                Model model) {
+        Securities securities = securitiesRepository.findById(id).orElseThrow();
+        securities.setData_time(data_time);
+        securities.setTool(tool);
+        securities.setCost(cost);
+        securitiesRepository.save(securities);
+
+        return "redirect:/";
+    }
+
+    @PostMapping("/security/{id}/remove")
+    public String securitiesRemove(@PathVariable(value = "id") Integer id,
+                                   Model model) {
+        Securities securities = securitiesRepository.findById(id).orElseThrow();
+        securitiesRepository.delete(securities);
+
+        return "redirect:/";
+    }
 }
